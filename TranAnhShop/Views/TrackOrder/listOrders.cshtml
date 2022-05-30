@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TranAnhShop.Models.mOrder>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+<div class="container bg-white mb-5">
+    <div class="page-section-title">
+        <h3 style="text-align:center;">Theo dõi đơn hàng</h3>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table shopping-summery">
+                <thead>
+                    <tr class="main-hading">
+                        <th class="pro-remove">Code</th>
+                        <th class="pro-thumbnail">Tên khách hàng</th>
+                        <th class="pro-title">Thời gian order</th>
+                        <th class="pro-price">Thời gian giao hàng(dự kiến)</th>
+                        <th class="pro-quantity">Trạng thái đơn hàng</th>
+                        <th class="pro-subtotal">Chi tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+
+
+                        <tr>
+                            <td class="image" data-title="No">@item.Code</td>
+                            <td class="product-des" data-title="Description">
+                                <p class="product-name"><a href="#">@item.DeliveryName</a></p>
+
+                            </td>
+                            <td class="price" data-title="Price">   @item.CreateDate</td>
+
+                            <td class="total-amount" data-title="Total">
+
+                                <strong class="text-danger">@item.ExportDate</strong>
+                            </td>
+                            <td>
+                                @if (item.Status == 2)
+                                {
+                                    <span class="text-danger">Chờ duyệt</span>
+                                }
+                                else if (item.Status == 1)
+                                {
+                                    <span class="text-danger">Đã hoàn thành</span>
+                                }
+                                else if (item.Status == 3)
+                                {
+                                    <span class="text-danger">Đã Hủy</span>
+                                }
+                            </td>
+
+                            <td class="pro-subtotal"> <a href="thong-tin-don-hang/@item.ID">Xem thêm</a></td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

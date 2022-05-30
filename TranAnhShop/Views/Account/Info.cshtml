@@ -1,0 +1,30 @@
+﻿@model TranAnhShop.Models.mUser
+<div class="row">
+    <div class="col-12 mb-3">
+        <p class="border-m "></p>
+    </div>
+    <div class="col-12 mx-3 pb-3">
+        <div class="h5" style="text-decoration:underline">Thông tin nhận hàng</div>
+        <table class="small my-2">
+            <tr>
+                <td style="width:12rem" class="text-secondary">Họ tên</td>
+                <td>@Model.Fullname</td>
+            </tr>
+            <tr>
+                <td class="text-secondary">Số điện thoại</td>
+                <td>@Model.Phone</td>
+            </tr>
+            <tr>
+                <td class="text-secondary">Email</td>
+                <td> @Model.Email</td>
+            </tr>
+            <tr>
+                <td class="text-secondary">Địa chỉ nhân hàng</td>
+                <td>@Model.Address</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-12 mt-3">
+        <p class="border-m "></p>
+    </div>
+</div>

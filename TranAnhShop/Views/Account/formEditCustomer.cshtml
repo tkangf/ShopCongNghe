@@ -1,0 +1,49 @@
+﻿@model TranAnhShop.Models.mUser
+<form action="~/Account/Edit" id="form_editprofile" method="POST">
+    <div class="tab-content flex-sm-row mt-2">
+        <li class="tab-pane active" id="home" role="tabpanel">
+            <div class="my-2" style="background-color: white;">
+                <br />
+                <div class="row">
+                    <div class="col-4">
+                        <label for="email">Họ và Tên</label>
+                        <input class="mb-0 form-control" type="text" placeholder="Tên Đăng Nhập" value="@Model.Name" name="Name" disabled>
+                        @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-4">
+                        <label for="email">Email</label>
+                        <input class="mb-0 form-control" type="email" placeholder="Email" value="@Html.DisplayFor(model => model.Email)" name="Email" disabled>
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-4">
+                        <label for="email">Địa chỉ</label>
+                        <input class="mb-0 form-control" type="text" placeholder="Adress" value="@Session["Address_Name"]" name="Email" disabled>
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+
+                    <div class="col-5">
+
+                    </div>
+                    <div class="col-7 pt-2 pb-3">
+                        <div class="text-right mr-3">
+                            <!--<button style="background:#ee4d2d" type="#" class="btn rounded-0 px-5 py-2">-->
+                            @*<a href="#" class="text-white text-decoration-none">*@
+                            <!--<small class="text-white text">Chỉnh sửa</small>-->
+                            @*</a>*@
+                            <!--</button>-->
+                            <button type="button" id="notready" class="btn rounded-0 px-5 py-2" style="background:#ee4d2d" @*data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
+                                                        data-keyboard="false"*@>
+                                <small class="text-white text">Chỉnh sửa</small>
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </div>
+</form>

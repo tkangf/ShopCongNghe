@@ -1,0 +1,45 @@
+﻿@model TranAnhShop.Models.mOrder
+@{
+    ViewBag.Title = "DetailOrder";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+<div class="breadcrumb-c clearfix d-block">
+    <ul class="container-91">
+        <li><a href="/">Trang chủ </a></li>
+        <li class="dsfsd"><a href="#"> Thông tin đơn hàng</a></li>
+    </ul>
+</div>
+<!-- order complete Page Start -->
+<section class="order-complete inner-page-sec-padding-bottom">
+    <div class="container bg-white">
+        <div class="row">
+            <div class="col-12">
+                <div class="order-complete-message text-center">
+                    <h1>Chào bạn!</h1>
+                    <p>Thông tin chi tiết đơn hàng của bạn.</p>
+                </div>
+                <ul class="order-details-list">
+                    <li>Mã đơn hàng: <strong>@Model.ID</strong></li>
+                    <li>Tên khách hàng: <strong>@Model.DeliveryName</strong></li>
+                    <li>Số điện thoại: <strong>@Model.DeliveryPhone</strong></li>
+                   
+                    <li>Ngày đặt hàng: <strong>@Model.CreateDate</strong></li>
+                    <li>Ngày thanh toán: <strong></strong></li>
+                    @if (Model.Status == 1)
+                    {
+                        <li>Trạng thái thanh toán: <strong>Đã thanh toán</strong></li>
+                    }
+                    else
+                    {
+                        <li>Trạng thái thanh toán: <strong>Chưa thanh toán vui lòng thanh toán lại.</strong></li>
+                    }
+                    <li>Phương thức thanh toán: <strong>Thanh toán bằng tiền mặt khi giao hàng.</strong></li>
+                </ul>
+                <h3 class="order-table-title">Chi tiết đơn hàng</h3>
+                <div class="table-responsive">
+                    @Html.Action("productDetailCheckOut", "TrackOrder", new { orderId = Model.ID })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

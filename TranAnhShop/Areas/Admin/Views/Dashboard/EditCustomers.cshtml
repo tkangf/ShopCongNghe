@@ -1,0 +1,214 @@
+﻿@model TranAnhShop.Models.mUser
+@{
+    ViewBag.Title = "Profiles";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="content">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Thông tin cá nhân</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">User Profile</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src="~/Public/images/user/@Session["Admin_Images"]"
+                                     alt="@Session["Admin_fullname"]">
+                            </div>
+
+                            <h3 class="profile-username text-center">@Session["Admin_fullname"]</h3>
+
+                            <p class="text-muted text-center">@Session["Admin_Name"]</p>
+
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Followers</b> <a class="float-right">#</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Following</b> <a class="float-right">#</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Friends</b> <a class="float-right">#</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                    <!-- About Me Box -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Thông tin</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <strong><i class="fas fa-book mr-1"></i> Tên</strong>
+
+                            <p class="text-muted">
+                                @Session["Admin_fullname"]
+                            </p>
+
+                            <hr>
+
+                            <strong><i class="fas fa-map-marker-alt mr-1"></i>Số điện thoại</strong>
+
+                            <p class="text-muted">0@(@Session["Admin_Phone"])</p>
+
+                            <hr>
+
+
+
+                            <strong><i class="far fa-file-alt mr-1"></i> Địa chỉ</strong>
+
+                            <p class="text-muted"> @Session["Admin_Address"]</p>
+
+                        </div>
+                       
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin</a></li>
+
+                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                            </ul>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    <!-- Post -->
+                                    <div class="post">
+                                        <div class="user-block">
+                                            <img class="img-circle img-bordered-sm" src="~/Public/images/user/@Session["Admin_Images"]" alt="user image">
+                                            <span class="username">
+                                                <a href="#">@Session["Admin_Fullname"]</a>
+                                                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                                            </span>
+                                            <span class="description">Shared publicly</span>
+                                        </div>
+                                        <!-- /.user-block -->
+                                        <p>
+                                            Có @ViewBag.CountOrderCancel đơn hàng mới
+                                        </p>
+
+                                        <p>
+                                            <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+                                            <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                                            <span class="float-right">
+                                                <a href="#" class="link-black text-sm">
+                                                    <i class="far fa-comments mr-1"></i> Comments
+                                                </a>
+                                            </span>
+                                        </p>
+
+                                        <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                                    </div>
+                                    <!-- /.post -->
+
+                                </div>
+                                <!-- /.tab-pane -->
+                                <!-- /.tab-pane -->
+
+                                <div class="tab-pane" id="settings">
+                                    @using (Html.BeginForm("EditCustomers", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.HiddenFor(model => model.ID)
+                                        @Html.HiddenFor(model => model.FirstName)
+                                        @Html.HiddenFor(model => model.LastName)
+                                        @Html.HiddenFor(model => model.Fullname)
+                                        @Html.HiddenFor(model => model.Email)
+                                        @Html.HiddenFor(model => model.EmailID)
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Tên truy cập</label>
+                                            <div class="col-sm-10">
+                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "mb-0 form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail" class="col-sm-2 col-form-label">Mật khẩu</label>
+                                            <div class="col-sm-10">
+                                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Mật khẩu", type = "password" } })
+                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputName2" class="col-sm-2 col-form-label"> Địa chỉ</label>
+                                            <div class="col-sm-10">
+                                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputExperience" class="col-sm-2 col-form-label">Số điện thoại</label>
+                                            <div class="col-sm-10">
+                                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="submit" class="btn btn-danger">Lưu</button>
+                                            </div>
+                                            
+                                        </div>
+                                    }
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

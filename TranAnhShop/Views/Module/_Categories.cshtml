@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TranAnhShop.Models.mCategory>
+<nav class="main-menu">
+    <ul>
+        @{int i = 1; }
+        @foreach (var c in Model.Take(12))
+        {
+<li>
+    <a href="~/@c.Slug"><i class="nicon-@i"></i> &nbsp; @c.Name</a>
+    <ul>
+        @foreach (var d in Model)
+        {
+            if ( d.ParentID == c.ID )
+            {
+<li>
+    <a href="~/@d.Slug" class="font-weight-bold">@d.Name</a>
+</li>}
+                }
+    </ul>
+</li>i++;
+            }
+    </ul>
+</nav>

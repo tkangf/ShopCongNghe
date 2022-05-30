@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TranAnhShop.Models.mMenu>
+<footer class="">
+    <div class="row container-91 my-3">
+        @foreach (var i in ViewBag.Title)
+        {
+            if (i.ParentID == 0)
+            {
+<div class="col-3">
+    <div class="title text-uppercase font-weight-bold">@i.Name</div>
+    @foreach (var k in Model)
+    {
+        if (k.ParentID == i.ID)
+        {
+<a href="~/@k.Link" class="ll text-decoration-none text-dark"> ‣ @k.Name</a>                        }
+                    }
+</div>}
+
+            }
+        <div class="col-3">
+            <div class="title  font-weight-bold" ">TỔNG ĐÀI HỖ TRỢ (GỌI MIỄN PHÍ)</div>
+            <a href="javascript:void(0)" class="ll text-decoration-none text-dark"> Mua hàng <h6 class="font-weight-bold">0123.456.789 (7:30 - 22:00)</h6></a>
+            <a href="javascript:void(0)" class="ll text-decoration-none text-dark"> Bảo hành <h6 class="font-weight-bold">0123.456.789 (8:30 - 17:00)</h6></a>
+            <a href="javascript:void(0)" class="ll text-decoration-none text-dark"> Sửa chữa <h6 class="font-weight-bold">0123.456.789 (8:30 - 17:00)</h6></a>
+
+        </div>
+        <div class="col-3">
+            <div class="title font-weight-bold mb-2">KẾT NỐI VỚI CHÚNG TÔI</div>
+            <a href="">
+                <button class="btn btn-primary my-2 my-sm-0" style="border-radius:0">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+            </a>
+            <a href="">
+                <button class="btn btn-info my-2 my-sm-0" style="border-radius:0">
+                    <i class="fab fa-twitter"></i>
+                </button>
+            </a>
+            <a href="">
+                <button class="btn btn-danger my-2 my-sm-0" style="border-radius:0">
+                    <i class="fab fa-google-plus-g"></i>
+                </button>
+            </a>
+
+        </div>
+    </div>
+
+</footer>

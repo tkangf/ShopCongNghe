@@ -1,0 +1,473 @@
+﻿@model IEnumerable<TranAnhShop.Models.mUser>
+@*@model TranAnhShop.Models.mUser*@
+@{ ViewBag.Title = Session["User_Name"];
+    Layout = "~/Views/Shared/_LayoutSite.cshtml"; }
+@Html.Partial("_Nofit")
+<script src="~/Public/js/target.min.js"></script>
+<script src="~/Public/js/sweetalert2@9.js"></script>
+<div style="background:#f5f5f5; min-height:32rem">
+    <div class="container-91 mx-auto">
+        <div class="row">
+            <div class="col-3 mt-5">
+                <div class="">
+                    <div class="float-left">
+                        @*<img src="images/boxed-bg.png" ralt="" width="50"
+                            class="rounded-circle">*@
+                    </div>
+                    <div class="float-left pl-3 border-bottom">
+
+                        <small class="font-weight-bold">Sửa hồ sơ</small><br>
+                        <a href="account/editaccount">
+                            <small class="text-secondary">
+                                <i class="fas fa-pen fa-sm"></i>
+                                Sửa hồ sơ
+                            </small>
+                        </a>
+
+                    </div>
+                </div>
+                <br>
+                <div style="clear:both"></div>
+                <div class="mt-4 pl-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link  text-secondary" href="profile" style="font-size: 14px;">
+                                <i class="far fa-id-card"></i> Thông tin tài khoản
+                            </a>
+                        </li>
+                        
+                        
+                        @*<li class="nav-item">
+                                <a class="nav-link text-secondary" href="notification" style="font-size: 14px;">
+                                    <i class="far fa-bell"></i>&nbsp
+                                    Thông báo
+                                </a>
+                            </li>*@
+                        <li class="nav-item ">
+                            <a class="nav-link text-secondary" href="javascript:void(0)" style="font-size: 14px;">
+                                <i class="fas fa-sign-out-alt"></i>&nbsp Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-9 bg- mt-3" style="width:50rem; margin-left:-50px">
+                <div class="list-group flex-sm-row" id="listtab-order" role="tablist">
+                    <button class="text-center list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Tất cả</button>
+                    <button class="text-center list-group-item list-group-item-action" id="Button" onclick="Me();" data-toggle="list" href="#profile" role="tab"> </button>
+                    <button class="text-center list-group-item list-group-item-action" id="Button1" onclick="Me();" data-toggle="list" href="#messages" role="tab"> </button>
+                    <button class="text-center list-group-item list-group-item-action" id="Button2" onclick="Me();" data-toggle="list" href="#settings" role="tab"> </button>
+                </div>
+
+                <div class="tab-content flex-sm-row mt-2">
+                    <div class="tab-content flex-sm-row mt-2">
+                        <li class="tab-pane active" id="home" role="tabpanel">
+                            <div class="my-2" style="background-color: white;">
+                                <br />
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="email">Họ và Tên</label>
+                                        <input class="mb-0 form-control" type="text" placeholder="Tên Đăng Nhập" value="@Session["User_Name"]" name="Name" disabled>
+
+                                    </div>
+
+                                    <div class="col-4">
+                                        <label for="email">Email</label>
+                                        <input class="mb-0 form-control" type="email" placeholder="" value="@Session["Email_Name"]" name="Email" disabled>
+
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="email">Địa chỉ</label>
+                                        <input class="mb-0 form-control" type="text" placeholder="" value="@Session["Address_Name"]" name="Email" disabled>
+
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+
+                                    <div class="col-5">
+
+                                    </div>
+                                    <div class="col-7 pt-2 pb-3">
+                                        <div class="text-right mr-3">
+                                            <!--<button style="background:#ee4d2d" type="#" class="btn rounded-0 px-5 py-2">-->
+                                            @*<a href="#" class="text-white text-decoration-none">*@
+                                            <!--<small class="text-white text">Chỉnh sửa</small>-->
+                                            @*</a>*@
+                                            <!--</button>-->
+                                            @foreach (var item in Model)
+                                            {
+                                                <button><small class="text-white text"><i style="color:white">@Html.ActionLink("Chỉnh sửa", "EditCustomer", new { id = @Session["User_ID"] }, new { @class = "btn rounded-0 px-5 py-2", @style = "background:#ee4d2d, color:white" })</i></small></button>
+
+
+                                                @*@Html.Action("Edit", "Account")*@
+                                                @*                    @Html.ActionLink("Chỉnh sửa ", "EditCustomer", @Model.ID, new { @class = "btn rounded-0 px-5 py-2", @style = "background:#ee4d2d" })
+                                                *@
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                    <li class="tab-pane" id="profile" role="tabpanel">...</li>
+                    <li class="tab-pane" id="messages" role="tabpanel">...</li>
+                    <li class="tab-pane" id="settings" role="tabpanel">...</li>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal Register-->
+<div class="modal fade" id="exampleModaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModaledit"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document" style="min-width:720px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#4a90e2">
+                <h5 class="modal-title text-light" id="exampleModaledit">
+                    <i class="fas fa-user-plus"></i>
+                    Đăng ký tài khoản
+                </h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row  mx-1">
+                    <div class="col-7">
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="col-md-3 mb-3">
+                                    <label class="text-muted mini-s-c pl-2">Họ</label>
+                                    <input type="text" class="form-control ten" placeholder="" value="" required
+                                           name="FirstName" id="FirstName">
+                                    <div class="invalid-feedback">
+                                        Tên không được trống
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label class="text-muted mini-s-c pl-2">Tên</label>
+                                    <input type="text" class="form-control ho" placeholder="" value="" required
+                                           name="LastName" id="LastName">
+
+                                    <div class="invalid-feedback">
+                                        Họ không được trống
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="text-muted mini-s-c pl-2">Họ và Tên</label>
+                                    <input type="text" class="form-control ten" placeholder="" value="" required
+                                           name="Fullname" id="Fullname">
+                                    <div class="invalid-feedback">
+                                        Họ và tên không được trống
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="text-muted mini-s-c pl-2">Email</label>
+                                    <input type="email" class="form-control email" placeholder="" value="" required
+                                           name="Email" id="Email">
+                                    <div class="invalid-feedback">
+                                        Email không được để trống
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="text-muted mini-s-c pl-2">Nhập lại Email</label>
+                                    <input type="email" class="form-control email" placeholder="" value="" required
+                                           name="EmailID" id="EmailID" />
+
+                                    <div class="invalid-feedback">
+                                        Email xác nhận không được để trống
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="text-muted mini-s-c pl-2">Tên truy cập</label>
+                                    <input type="text" class="form-control ten" placeholder="" value="" required
+                                           name="ten" id="Name">
+                                    <div class="invalid-feedback">
+                                        Tên truy cập không được trống
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="text-muted mini-s-c pl-2">Số điện thoại</label>
+                                    <input type="number" class="form-control valiphone Phone8" id="valiphone"
+                                           placeholder="" required name="phone">
+                                    <div class="invalid-feedback invalid-feedback-valiphone">
+                                        Số điện thoại đã được đăng ký
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="mini-s-c text-muted pl-2">Mật khẩu</label>
+                                    <input type="password" class="form-control pass-res" placeholder="" required
+                                           name="pass" id="Pass">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="mini-s-c text-muted pl-2">Xác nhận lại mật khẩu</label>
+                                    <input type="password" class="form-control pl-2  repass-res" placeholder=""
+                                           required name="repass">
+                                    <div class="invalid-feedback">
+                                        <!--is-invalid-->
+                                        Mật khẩu không khớp. Hãy thử lại.
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label class="text-muted mini-s-c pl-2">Địa chỉ</label>
+                                    <input type="text" class="form-control address" placeholder="" value="" required
+                                           name="Address" id="Address">
+                                    <div class="invalid-feedback">
+                                        Địa chỉ không được để trống
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck3"
+                                           required checked>
+                                    <label class="form-check-label mini-s-c" for="invalidCheck3">
+                                        Tôi đồng ý với các điều khoản dịch vụ
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary mini-s-c" id="btn_register" type="submit">
+                                Đăng
+                                ký
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-5">
+                        <img src="~/Public/images/account.svg" alt="E" width="200" class="d-block m-auto pt-5">
+                        <div style="font-size:14px; opacity: .7;" class="text-center">
+                            Một tài khoản. Hoạt động
+                            trên mọi sản phẩm và dịch vụ
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row clearfix mx-4 mt-1 mb-3">
+                <div class="col-6" style="color:#4a90e2; font-size: 12px;">
+                    <button data-toggle="modal" data-target=".bd-example-modal-lg" data-whatever="getbootstrap" class="dn-lg text-primary"
+                            style="border:0; background:#fff">
+                        Đăng nhập
+                    </button>
+                    | <a href="">Quên mật khẩu </a>
+                </div>
+                <div class="col-4"></div>
+                <div class="col-2" style="margin-top:-10px">
+                    <button type="button" class=" px-4 btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('#btn_register').click(function (e) {
+        e.preventDefault();
+        @*alert("OK")*@
+        $.ajax({
+            url: "account/register",
+            type: "POST",
+            data: {
+                user: {
+                    Email: $('#Email').val(),
+                    Address: $('#Address').val(),
+                    Fullname: $('#Fullname').val(),
+                    Name: $('#Name').val(),// dùng tạm, sau xóa luôn cột này đi
+                    Password: $('#Pass').val(),
+                    Phone: $('.Phone8').val(),
+                    //update
+                    FirstName: $('#FirstName').val(),
+                    LastName: $('#LastName').val(),
+                    EmailID: $('#EmailID').val(),
+                    File: $('#file').val(),
+                }
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.Code == 0) {
+                    $('#exampleModaledit').modal("hide")
+                    swal({
+                        icon: "success",
+                        title: data.Message,
+                        timer: 5000
+                    });
+                    return;
+                } else if(data.Code == 1) {
+                    swal({
+                        icon: "warning",
+                        title: data.Message,
+                        timer: 5000
+                    });
+                    return;
+                }
+                swal({
+                    icon: "warning",
+                    title: data.Message,
+                    timer: 5000
+                });
+            }
+        })
+    })
+</script>
+
+
+<style>
+    #listtab-order .active {
+        border-bottom: 3px solid #ee4d2d;
+        background: #fff;
+        color: #ee4d2d;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .list-group-item {
+        border-bottom: 1px solid #eee;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .vertical-center {
+        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+</style>
+<script>
+    document.getElementById("Button").disabled = true;
+    document.getElementById("Button1").disabled = true;
+    document.getElementById("Button2").disabled = true;
+</script>
+<script>
+
+    function editProfile() {
+
+        var pass1 = $("#psw").val();
+        var pass2 = $("#repeat-password").val();
+
+        if (pass1 != pass2) {
+            $("#error").text("2 mật khẩu không khớp");
+
+            return false;
+        }
+
+        var data = $("#form_editprofile").serialize();
+        $.ajax({
+            url: '/Account/Profile',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                if (data.statuss == 1) {
+                    alertify.error("<span class='font-weight-bold'>Thông báo: </span>Mật khẩu không đúng");
+                    return false;
+                }
+                else if (data.statuss == 2) {
+                    alertify.error("<span class='font-weight-bold'>Thông báo: </span>Tên đăng nhập đã tồn tại");
+                    return false;
+                }
+                else if (data.statuss == 3) {
+                    alertify.error("<span class='font-weight-bold'>Thông báo: </span>Cập nhật thất bại");
+                    return false;
+                }
+                else {
+                    $("#unameSess").text(data.username);
+                    $("#1_fullname").text(data.fullname);
+                    $("#2_fullname").text(data.fullname);
+                    alertify.success("<span class='font-weight-bold'>Thông báo:</span> Cập nhật thành công");
+                }
+
+            },
+            error: function (e) {
+                alertify.error("<span class='font-weight-bold'>Thông báo: </span>Lỗi: " + e.statusText);
+                return false;
+            }
+        })
+    }
+</script>
+
+
+<script>
+    $(function () {
+        $('#notready').click(function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'warning',
+                title: 'Chức năng chưa sẵn sàng!',
+                timer: 5000
+            })
+        })
+    })
+</script>
+<script>
+    $('#btn_register').click(function (e) {
+        e.preventDefault();
+        @*alert("OK")*@
+        $.ajax({
+            url: "account/register",
+            type: "POST",
+            data: {
+                user: {
+                    Email: $('#Email').val(),
+                    Address: $('#Address').val(),
+                    Fullname: $('#Fullname').val(),
+                    Name: $('#Name').val(),// dùng tạm, sau xóa luôn cột này đi
+                    Password: $('#Pass').val(),
+                    Phone: $('.Phone8').val(),
+                    //update
+                    FirstName: $('#FirstName').val(),
+                    LastName: $('#LastName').val(),
+                    EmailID: $('#EmailID').val(),
+                    File: $('#file').val(),
+                }
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.Code == 0) {
+                    $('#exampleModal').modal("hide")
+                    swal({
+                        icon: "success",
+                        title: data.Message,
+                        timer: 5000
+                    });
+                    return;
+                } else if(data.Code == 1) {
+                    swal({
+                        icon: "warning",
+                        title: data.Message,
+                        timer: 5000
+                    });
+                    return;
+                }
+                swal({
+                    icon: "warning",
+                    title: data.Message,
+                    timer: 5000
+                });
+            }
+        })
+    })
+</script>

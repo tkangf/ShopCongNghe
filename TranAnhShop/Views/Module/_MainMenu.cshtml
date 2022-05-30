@@ -1,0 +1,4 @@
+﻿@model IEnumerable<TranAnhShop.Models.mMenu>
+@foreach (var t in Model)
+{
+<a href="~/@t.Link" class="text-white text-decoration-none mr-3">@t.Name</a>}

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TranAnhShop.Models.mPost>
+<div class="row clearfix container-91">
+    <div class="col-sm-3 p-0 m-0">
+        @Html.Action("Categories", "Module")
+    </div>
+    <div class="col-sm-7 slider">
+        @Html.Action("SlideShow", "Module")
+    </div>
+    <div class="col-sm-2">
+        <div class="exp-news">
+            <div class="pl-2 py-2 border-bottom border-light">
+                <div class="fb-like" data-href="#" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+            </div>
+            <div class="title text-dark font-weight-bold">
+                <a href="~/kinh-nghiem-hay" class="text-dark text-decoration-none">KINH NGHIỆM HAY - VIDEO</a> <i class="fas fa-caret-right"></i>
+            </div>
+            @foreach (var u in Model)
+            {
+<div class="des-exp">
+    <a href="~/@u.Slug" class="text-dark text-decoration-none">
+        @u.Title
+    </a>
+</div>            }
+            <div class="mb-4"></div>
+            @foreach (var t in ViewBag.Slider)
+            {
+<div class="my-1 pl-2">
+    <a href="@t.Url" class="my-5"><img src="~/Public/images/sliders/@t.Image" alt="@t.Name"></a>
+</div>            }
+        </div>
+    </div>
+</div>

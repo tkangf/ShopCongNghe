@@ -1,0 +1,313 @@
+﻿<a href="~/Admin" class="brand-link">
+    <img src="~/Public/images/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">@Session["Admin_Name"]</span>
+</a>
+<style>
+    #menu a {
+        color: orangered;
+    }
+</style>
+
+<div class="sidebar">
+    <nav class="mt-2" id="menu">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Dashboard" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Category/Index" class="nav-link">
+                    <i class="fas fa-copyright nav-icon"></i>
+                    <p>
+                        Loại sản phẩm
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/Category/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Category/Create" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Category/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Product/Index" class="nav-link">
+                    <i class="nav-icon fas fa-parking"></i>
+                    <p>
+                        Sản phẩm
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/Product/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Product/Create" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Product/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Topic/Index" class="nav-link">
+                    <i class="fab fa-tumblr-square nav-icon"></i>
+                    <p>
+                        Chủ đề bài viết
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/Topic/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Topic/Create" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Topic/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Post/Index" class="nav-link">
+                    <i class="fab fa-pinterest-square nav-icon"></i>
+                    <p>
+                        Bài viết
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/Post/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Post/Create" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Post/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Page/Index" class="nav-link">
+                    <i class="fab fa-pinterest-square nav-icon"></i>
+                    <p>
+                        Trang đơn
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/Page/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Page/Create" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Page/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Menu/Index" class="nav-link">
+                    <i class="fab fa-medium nav-icon"></i>
+                    <p>
+                        Menu
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/Menu/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Menu/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Order/Index" class="nav-link">
+                    <i class="fab fa-opera nav-icon"></i>
+                    <p>
+                        Đơn hàng
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/Order/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Order/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Đơn đã hủy</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="~/Admin/Order/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Contact/Index" class="nav-link">
+                    <i class="fab fa-cuttlefish nav-icon"></i>
+                    <p>
+                        Liên hệ
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/Contact/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Contact/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/Slider/Index" class="nav-link">
+                    <i class="fab fa-stripe-s nav-icon"></i>
+                    <p>
+                        Slider
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/Slider/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Slider/Create" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/Slider/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="~/Admin/User/Index" class="nav-link">
+                    <i class="fab fa-uniregistry nav-icon"></i>
+                    <p>
+                        Thành viên
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/Admin/User/Index" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/User/Create" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Admin/User/Trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
